@@ -1,0 +1,3 @@
+applications/autor/migrations/*
+applications/lector/migrations/*
+applications/libro/migrations/*
