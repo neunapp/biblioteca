@@ -1,6 +1,7 @@
 from django.db import models
 
-# Create your models here.
+# managers
+from .managers import AutorManager
 
 class Autor(models.Model):
     nombre = models.CharField(
@@ -14,5 +15,7 @@ class Autor(models.Model):
     )
     edad = models.PositiveIntegerField()
 
+    objects = AutorManager()
+
     def __str__(self):
-        return self.nombre + '-' + self.apellidos
+        return str(self.id) + '-' + self.nombre + '-' + self.apellidos
