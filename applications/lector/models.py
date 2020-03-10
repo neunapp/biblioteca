@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import post_delete
 
 # from autor
 from applications.autor.models import Persona
@@ -6,6 +7,7 @@ from applications.autor.models import Persona
 from applications.libro.models import Libro
 #
 from .managers import PrestamoManager
+from .signals import update_libro_stok
 
 class Lector(Persona):
     
@@ -41,3 +43,11 @@ class Prestamo(models.Model):
 
     def __str__(self):
         return self.libro.titulo
+
+
+# def update_libro_stok(sender, instance, **kwargs):
+#     # actualizamos el stok si se elimina un prestamo
+#     instance.libro.stok = instance.libro.stok + 1
+#     instance.libro.save()
+
+post_delete.connect(update_libro_stok, sender=Prestamo)
