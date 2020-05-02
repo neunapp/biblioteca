@@ -33,7 +33,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #local apps
+    'django.contrib.postgres',
+    #
     'applications.autor',
     'applications.libro',
     'applications.lector',
